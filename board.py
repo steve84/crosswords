@@ -136,21 +136,24 @@ class Board():
       
     
     def isWordOnBoardHorizontal(self, word):
-      for y in range(0, self.height - self.word_length):
-        for x in range(0, self.width - self.word_length):
-          for h in range(x, x + self.word_length):
-            if self.board[y][h] != word[x-h]:
-              break
-          return True
+      for y in range(0, self.height - self.word_length + 1):
+        for x in range(0, self.width - self.word_length + 1):
+          if ''.join(self.board[y][x:x+self.word_length]) == word:
+            return False
       return False
 
 
     def isWordOnBoardVertical(self, word):
-      for y in range(0, self.height - self.word_length):
-        for x in range(0, self.width - self.word_length):
-          for h in range(y, y + self.word_length):
-            if self.board[h][x] != word[y-h]:
-              break
-          return True
+      for y in range(0, self.height - self.word_length + 1):
+        for x in range(0, self.width - self.word_length + 1):
+          if self.getBoardValueVertical(x, y) == word:
+            return True
       return False
+      
+    
+    def getBoardValueVertical(self, x, y):
+      word = ''
+      for i in range(y, y + self.word_length):
+        word += self.board[i][x]
+      return word
       

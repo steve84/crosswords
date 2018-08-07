@@ -4,6 +4,10 @@ class Solver():
     
     
     def solve(self, board, clues):
+        if board.isBoardComplete():
+          for clue in clues:
+            if board.isWordOnBoardHorizontal(clue) or board.isWordOnBoardVertical(clue):
+              clues.remove(clue)
         if clues:
             x_coord, y_coord, direction = board.findHWord()
             if x_coord < 0 and y_coord < 0:
@@ -20,6 +24,7 @@ class Solver():
                 self.solve(new_board,
                            new_clues)
         else:
+            board.printBoard()
             return True
             
 
