@@ -126,3 +126,31 @@ class Board():
             if y+self.word_length-1 < (self.height -1):
                 endCheck = self.board[y+self.word_length][x] == '0'
             return startCheck and endCheck
+    
+    def isBoardComplete(self):
+      for y in range(0, self.height):
+          for x in range(0, self.width):
+            if self.board[y][x] == '':
+              return False
+      return True
+      
+    
+    def isWordOnBoardHorizontal(self, word):
+      for y in range(0, self.height - self.word_length):
+        for x in range(0, self.width - self.word_length):
+          for h in range(x, x + self.word_length):
+            if self.board[y][h] != word[x-h]:
+              break
+          return True
+      return False
+
+
+    def isWordOnBoardVertical(self, word):
+      for y in range(0, self.height - self.word_length):
+        for x in range(0, self.width - self.word_length):
+          for h in range(y, y + self.word_length):
+            if self.board[h][x] != word[y-h]:
+              break
+          return True
+      return False
+      
