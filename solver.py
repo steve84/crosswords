@@ -12,10 +12,12 @@ class Solver():
             x_coord, y_coord, direction = board.findHWord()
             if x_coord < 0 and y_coord < 0:
                 x_coord, y_coord, direction = board.findVWord()
+                if x_coord < 0 and y_coord < 0:
+                  return None
 
             words = self.suitableWords(x_coord, y_coord, direction, board, clues)
             if not len(words):
-                return False
+                return None
             for word in words:
                 new_board = deepcopy(board)
                 new_clues = deepcopy(clues)
@@ -25,7 +27,7 @@ class Solver():
                            new_clues)
         else:
             board.printBoard()
-            return True
+            return board
             
 
     def suitableWords(self, x, y, direction, board, clues):

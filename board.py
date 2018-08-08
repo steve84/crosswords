@@ -13,9 +13,9 @@ class Board():
     def findHWord(self):
         for y in range(0, self.height):
             for x in range(0, self.width):
-                if self.board[y][x] != NO_FIELD_CHAR and not self.isCompletedWord(x, y, 'h'):
+                if self.board[y][x] not in [NO_FIELD_CHAR, '']:
                     x_coord, y_coord, direction = self.findStart(x, y, 'h')
-                    if not self.isAWord(x_coord, y_coord, 'h'):
+                    if not self.isAWord(x_coord, y_coord, 'h') or self.isCompletedWord(x, y, 'h'):
                         continue
                     return x_coord, y_coord, direction
         return -1, -1, ''
@@ -23,9 +23,9 @@ class Board():
     def findVWord(self):
         for x in range(0, self.width):
             for y in range(0, self.height):
-                if self.board[y][x] != NO_FIELD_CHAR and not self.isCompletedWord(x, y, 'v'):
+                if self.board[y][x] not in [NO_FIELD_CHAR, '']:
                     x_coord, y_coord, direction = self.findStart(x, y, 'v')
-                    if not self.isAWord(x_coord, y_coord, 'v'):
+                    if not self.isAWord(x_coord, y_coord, 'v') or self.isCompletedWord(x, y, 'v'):
                         continue
                     return x_coord, y_coord, direction
         return -1, -1, ''

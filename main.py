@@ -4,20 +4,20 @@ from solver import Solver
 width = 14
 height = 14
 word_length = 7
-clues = ['ABWEGIG', 'ADRESSE', 'ANAEMIE',
-         'ANWEHEN', 'ARSENIG', 'EHEBUND',
-         'ESSERIN', 'FIRNEIS', 'GENUESE',
-         'GETREUE', 'HUTMODE', 'INHOUSE',
-         'KEHRAUS', 'KERATIN', 'MAGAZIN',
-         'MOSTERT', 'RATERIN', 'RESORTS',
-         'ROSINEN', 'SEEBAER', 'TROSSEN',
-         'TSUNAMI', 'WIESEHR', 'ZIGARRE']
+clues = ['AERZTIN', 'ALRAUNE', 'ANTARES',
+         'AUSFALL', 'AUSTRAL', 'AVENTIN',
+         'BEKLAGT', 'BENEFIZ', 'BUERSTE',
+         'GRANTIG', 'HAUSRAT', 'HEBAMME',
+         'MARILYN', 'MAUSERN', 'MINDERN',
+         'MUSISCH', 'PRANGER', 'PHAEAKE',
+         'RUSALKA', 'SATTELN', 'SCHAUER',
+         'SPONTAN', 'SPROSSE', 'SPRUDEL']
 
 layout = ['00111111100000',
           '00101010000000',
-          '11S11110000000',
-          '10111111100000',
           '11111110000000',
+          '10111111100000',
+          'S1111110000000',
           '10111111101000',
           '11111110101001',
           '10010101111111',
@@ -33,4 +33,3 @@ board = Board(height, width, word_length)
 board.setupBoard(layout)
 solver = Solver()
 solver.solve(board, clues)
-#board.printBoard()
